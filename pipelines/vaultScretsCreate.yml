@@ -1,13 +1,13 @@
 format_version: 10
 pipelines:
-  expense-tf-Plan:
-    group: expenseTerraform
+  vault-secrets-tf:
+    group: terraformTools
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
       git-214f6fa:
-        git: https://github.com/cDevOps78/expense_terraformGoCD.git
+        git: https://github.com/cDevOps78/vaultSecretsTF.git
         shallow_clone: false
         auto_update: true
         branch: main
@@ -15,6 +15,8 @@ pipelines:
       - apply:
           secure_variables:
             VAULT_TOKEN: "AES:/jvkC1Lso4gftkDu9XOmEg==:N8TCA8tmeOrSSuPA10zqTTvLhGmOI+Ut6sCe4jBH6BQ="
+            TF_VAR_NEW_RELIC_NGINX: "AES:7FNtltY8N3XuL8fpmLxwwA==:2tYYuhn0mHchoOtTanT5OHM2ZEOuEnqPd3g+IXFaMHF0pw7qiBjBRXQFIN4xU0Db"
+            TF_VAR_NEW_RELIC_BACKEND: "AES:aZFh/kIAF6pQOfffqDbx8g==:xiNw2ZFyVBPFHYtbPMqvhPmSgOUYPO1zS/6P44ePwwJLXSwhJUKMXa9HKIE+6sja"
           fetch_materials: true
           keep_artifacts: false
           clean_workspace: false
@@ -25,10 +27,5 @@ pipelines:
             job1:
               timeout: 0
               tasks:
-                - exec:
-                    arguments:
-                      - run.sh
-                      - dev
-                      - plan
-                    command: bash
-                    run_if: passed
+                - exec: {command: terraform, arguments: ["init"], run_if: passed}
+                - exec: {command: terraform, arguments: ["apply", "-auto-approve"], run_if: passed}
