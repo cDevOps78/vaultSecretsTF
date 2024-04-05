@@ -1,0 +1,1 @@
+variable "NEW_RELIC_NGINX" {}
