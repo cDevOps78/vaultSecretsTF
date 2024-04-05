@@ -11,7 +11,7 @@ module "common" {
 
 module "expense-dev" {
   source        = "./module"
-  path_m        =  "expense"
+  path_m        =  "expense-dev"
   description_m = "This is newrelic vault secrets"
   secret_m      = "newrelic"
   secret_data   = {
