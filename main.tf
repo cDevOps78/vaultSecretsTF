@@ -13,7 +13,7 @@ module "expense-dev" {
   source        = "./module"
   path_m        =  "expense"
   description_m = "This is newrelic vault secrets"
-  secret_m      = ""
+  secret_m      = "newrelic"
   secret_data   = {
     NEW_RELIC_NGINX   = var.NEW_RELIC_NGINX
     NEW_RELIC_BACKEND = var.NEW_RELIC_BACKEND
