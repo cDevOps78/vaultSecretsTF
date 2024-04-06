@@ -50,14 +50,6 @@ resource "vault_kv_secret" "backend" {
   )
 }
 
-resource "vault_kv_secret" "frontend" {
-  path = "expense-dev/backend"
-  data_json = jsonencode(
-    {
-      NEW_RELIC_NGINX = var.NEW_RELIC_NGINX
-    }
-  )
-}
 
 
 
