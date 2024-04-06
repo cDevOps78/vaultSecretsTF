@@ -39,5 +39,16 @@ resource "vault_kv_secret" "secret" {
   )
 }
 
+resource "vault_kv_secret" "secret" {
+  path = "expense-dev/backend"
+  data_json = jsonencode(
+    {
+      mysql_login_user = "root"
+      mysql_login_password = "ExpenseApp@1"
+      NEW_RELIC_BACKEND = var.NEW_RELIC_BACKEND
+    }
+  )
+}
+
 
 
