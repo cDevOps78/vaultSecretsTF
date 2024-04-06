@@ -30,7 +30,7 @@ module "expense-dev" {
 #  }
 #}
 
-resource "vault_kv_secret" "secret" {
+resource "vault_kv_secret" "mysql" {
   path = "expense-dev/mysql"
   data_json = jsonencode(
     {
@@ -39,7 +39,7 @@ resource "vault_kv_secret" "secret" {
   )
 }
 
-resource "vault_kv_secret" "secret" {
+resource "vault_kv_secret" "backend" {
   path = "expense-dev/backend"
   data_json = jsonencode(
     {
