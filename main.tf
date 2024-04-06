@@ -20,5 +20,15 @@ module "expense-dev" {
   }
 }
 
+module "expense-dev" {
+  source        = "./module"
+  path_m        =  "expense-dev"
+  description_m = "This is mysql vault secrets"
+  secret_m      = "mysql"
+  secret_data   = {
+    mysql_root_password = "ExpenseApp@1"
+  }
+}
+
 
 
