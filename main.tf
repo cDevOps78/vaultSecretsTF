@@ -20,7 +20,7 @@ module "expense-dev" {
   }
 }
 
-module "expense-dev" {
+module "expense-dev-mysql" {
   source        = "./module"
   path_m        =  "expense-dev"
   description_m = "This is mysql vault secrets"
