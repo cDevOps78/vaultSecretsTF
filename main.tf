@@ -20,14 +20,23 @@ module "expense-dev" {
   }
 }
 
-module "expense-dev-mysql" {
-  source        = "./module"
-  path_m        =  "expense-dev"
-  description_m = "This is mysql vault secrets"
-  secret_m      = "mysql"
-  secret_data   = {
-    mysql_root_password = "ExpenseApp@1"
-  }
+#module "expense-dev-mysql" {
+#  source        = "./module"
+#  path_m        =  "expense-dev"
+#  description_m = "This is mysql vault secrets"
+#  secret_m      = "mysql"
+#  secret_data   = {
+#    mysql_root_password = "ExpenseApp@1"
+#  }
+#}
+
+resource "vault_kv_secret" "secret" {
+  path = "expense-dev/mysql"
+  data_json = jsonencode(
+    {
+      mysql_root_password = "ExpenseApp@1"
+    }
+  )
 }
 
 
