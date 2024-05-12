@@ -35,7 +35,7 @@ resource "vault_kv_secret" "mysql" {
   data_json = jsonencode(
     {
       mysql_root_password = "ExpenseApp@1"
-    }
+    }m
   )
 }
 
