@@ -1,4 +1,4 @@
-format_version: 10
+Vformat_version: 10
 pipelines:
   vault-secrets-tf:
     group: terraformTools
